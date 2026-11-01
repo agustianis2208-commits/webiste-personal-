@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FisikaLab | Gerak Translasi dan Rotasi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="logo" href="#">Fisika<span>Lab.</span></a>
+    <nav>
+      <a href="#beranda">Beranda</a>
+      <a href="#materi">Materi</a>
+      <a href="#simulasi">Simulasi</a>
+      <a href="#eksperimen">Eksperimen</a>
+      <a href="#kuis">Kuis</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="beranda">
+      <div class="hero-content">
+        <p class="eyebrow">LABORATORIUM FISIKA INTERAKTIF</p>
+        <h1>Memahami Gerak<br><span>Translasi & Rotasi</span></h1>
+        <p>Jelajahi perbedaan gerak translasi, gerak rotasi, dan gerak menggelinding melalui materi, visualisasi, simulasi, serta eksperimen interaktif.</p>
+        <a class="primary-btn" href="#materi">Mulai Belajar <span>→</span></a>
+      </div>
+      <div class="hero-visual">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="hero-ball">●</div>
+        <div class="hero-caption">MECHANICS<br><small>Explore Motion</small></div>
+      </div>
+    </section>
+
+    <section class="section" id="materi">
+      <div class="section-heading">
+        <p class="eyebrow">01 — KONSEP DASAR</p>
+        <h2>Kenali Jenis Geraknya</h2>
+        <p>Pelajari karakteristik setiap gerak sebelum mencoba simulasinya.</p>
+      </div>
+
+      <div class="material-grid">
+        <article class="material-card">
+          <div class="material-icon">→</div>
+          <h3>Gerak Translasi</h3>
+          <p>Gerak suatu benda ketika setiap titik pada benda berpindah dengan arah dan jarak yang sama dalam selang waktu tertentu.</p>
+          <div class="formula">v = Δx / Δt</div>
+          <p class="small">Contoh: mobil bergerak lurus di jalan.</p>
+        </article>
+
+        <article class="material-card">
+          <div class="material-icon">↻</div>
+          <h3>Gerak Rotasi</h3>
+          <p>Gerak benda ketika setiap titik pada benda bergerak melingkar terhadap suatu sumbu putar.</p>
+          <div class="formula">ω = Δθ / Δt</div>
+          <p class="small">Contoh: kipas angin yang berputar.</p>
+        </article>
+
+        <article class="material-card">
+          <div class="material-icon">◉</div>
+          <h3>Gerak Menggelinding</h3>
+          <p>Gerak gabungan antara gerak translasi dan rotasi. Benda berpindah sekaligus berputar.</p>
+          <div class="formula">v = ωR</div>
+          <p class="small">Contoh: roda sepeda yang menggelinding.</p>
+        </article>
+      </div>
+
+      <div class="info-panel">
+        <h3>Hubungan Gerak Translasi dan Rotasi</h3>
+        <p>Pada gerak menggelinding tanpa tergelincir, kecepatan linear pusat massa berhubungan dengan kecepatan sudut melalui persamaan:</p>
+        <div class="big-formula">v = ωR</div>
+        <p>Keterangan: <b>v</b> adalah kecepatan linear (m/s), <b>ω</b> adalah kecepatan sudut (rad/s), dan <b>R</b> adalah jari-jari benda (m).</p>
+      </div>
+    </section>
+
+    <section class="section dark-section" id="simulasi">
+      <div class="section-heading">
+        <p class="eyebrow">02 — LABORATORIUM VIRTUAL</p>
+        <h2>Simulasi Gerak Interaktif</h2>
+        <p>Atur parameter dan amati perubahan gerak benda secara langsung.</p>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" data-mode="translasi">Translasi</button>
+        <button class="tab" data-mode="rotasi">Rotasi</button>
+        <button class="tab" data-mode="menggelinding">Menggelinding</button>
+      </div>
+
+      <div class="simulation-layout">
+        <div class="sim-stage">
+          <div class="stage-label" id="stageLabel">SIMULASI GERAK TRANSLASI</div>
+          <canvas id="simCanvas" width="850" height="360"></canvas>
+          <div class="sim-controls">
+            <button class="control-btn" id="playBtn">▶ Mulai</button>
+            <button class="control-btn secondary" id="resetBtn">↺ Ulangi</button>
+            <label>Kecepatan animasi
+              <select id="playback">
+                <option value="0.5">0.5×</option>
+                <option value="1" selected>1×</option>
+                <option value="2">2×</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <aside class="parameter-panel">
+          <h3>Pengaturan Parameter</h3>
+          <div class="parameter">
+            <label for="speed">Kecepatan linear (m/s)</label>
+            <output id="speedValue">2.0</output>
+            <input type="range" id="speed" min="0.5" max="8" step="0.5" value="2">
+          </div>
+          <div class="parameter">
+            <label for="acceleration">Percepatan (m/s²)</label>
+            <output id="accelerationValue">0.5</output>
+            <input type="range" id="acceleration" min="0" max="3" step="0.1" value="0.5">
+          </div>
+          <div class="parameter">
+            <label for="radius">Jari-jari (m)</label>
+            <output id="radiusValue">0.5</output>
+            <input type="range" id="radius" min="0.2" max="1.5" step="0.1" value="0.5">
+          </div>
+          <div class="parameter">
+            <label for="duration">Durasi (s)</label>
+            <output id="durationValue">10</output>
+            <input type="range" id="duration" min="5" max="20" step="1" value="10">
+          </div>
+          <div class="readout">
+            <div><span>Waktu</span><b id="timeRead">0.00 s</b></div>
+            <div><span>Posisi</span><b id="positionRead">0.00 m</b></div>
+            <div><span>Kecepatan</span><b id="velocityRead">2.00 m/s</b></div>
+            <div><span>Kecepatan sudut</span><b id="omegaRead">4.00 rad/s</b></div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="graph-grid">
+        <div class="graph-card">
+          <h3>Grafik Posisi terhadap Waktu</h3>
+          <canvas id="positionChart" width="600" height="260"></canvas>
+        </div>
+        <div class="graph-card">
+          <h3>Grafik Kecepatan terhadap Waktu</h3>
+          <canvas id="velocityChart" width="600" height="260"></canvas>
+        </div>
+      </div>
+
+      <div class="comparison">
+        <div>
+          <p class="eyebrow">PERBANDINGAN VISUAL</p>
+          <h3>Tiga Jenis Gerak dalam Satu Tampilan</h3>
+          <p>Amati perbedaan gerakan benda melalui visualisasi berikut.</p>
+        </div>
+        <canvas id="comparisonCanvas" width="850" height="300"></canvas>
+        <div class="legend">
+          <span>● Translasi</span>
+          <span>● Rotasi</span>
+          <span>● Menggelinding</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="eksperimen">
+      <div class="section-heading">
+        <p class="eyebrow">03 — KEGIATAN PENYELIDIKAN</p>
+        <h2>Eksperimen Virtual</h2>
+        <p>Ubah variabel dan amati bagaimana perubahan tersebut memengaruhi gerak benda.</p>
+      </div>
+
+      <div class="experiment-grid">
+        <article class="experiment-card">
+          <span class="experiment-number">EKSPERIMEN 01</span>
+          <h3>Pengaruh Jari-jari terhadap Kecepatan Sudut</h3>
+          <p>Jika kecepatan linear tetap, bagaimana perubahan jari-jari memengaruhi kecepatan sudut?</p>
+          <label>Kecepatan linear: <b id="expVLabel">4 m/s</b></label>
+          <input id="expV" type="range" min="1" max="10" value="4" step="1">
+          <label>Jari-jari: <b id="expRLabel">0.5 m</b></label>
+          <input id="expR" type="range" min="0.2" max="2" value="0.5" step="0.1">
+          <div class="experiment-result">
+            <span>Kecepatan sudut</span>
+            <strong id="expOmega">8.00 rad/s</strong>
+          </div>
+          <p class="small" id="expExplanation">Semakin besar jari-jari, semakin kecil kecepatan sudut jika kecepatan linear tetap.</p>
+        </article>
+
+        <article class="experiment-card">
+          <span class="experiment-number">EKSPERIMEN 02</span>
+          <h3>Pengaruh Kecepatan Sudut terhadap Kecepatan Linear</h3>
+          <p>Amati hubungan kecepatan sudut dan kecepatan linear pada benda menggelinding.</p>
+          <label>Kecepatan sudut: <b id="expWLabel">5 rad/s</b></label>
+          <input id="expW" type="range" min="1" max="15" value="5" step="1">
+          <label>Jari-jari: <b id="expR2Label">0.5 m</b></label>
+          <input id="expR2" type="range" min="0.2" max="2" value="0.5" step="0.1">
+          <div class="experiment-result">
+            <span>Kecepatan linear</span>
+            <strong id="expLinear">2.50 m/s</strong>
+          </div>
+          <p class="small" id="expExplanation2">Semakin besar kecepatan sudut, semakin besar kecepatan linear jika jari-jari tetap.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section quiz-section" id="kuis">
+      <div class="section-heading">
+        <p class="eyebrow">04 — EVALUASI PEMBELAJARAN</p>
+        <h2>Uji Pemahamanmu</h2>
+        <p>Jawab pertanyaan berikut untuk mengukur pemahamanmu.</p>
+      </div>
+      <div class="quiz-box">
+        <div class="quiz-top">
+          <span id="questionNumber">PERTANYAAN 1 DARI 5</span>
+          <span id="scoreLabel">Skor: 0</span>
+        </div>
+        <div class="progress"><div id="progressBar"></div></div>
+        <h3 id="questionText">Apa yang dimaksud dengan gerak translasi?</h3>
+        <div id="answers" class="answers"></div>
+        <p id="feedback" class="feedback"></p>
+        <button id="checkBtn" class="primary-btn">Periksa Jawaban</button>
+        <button id="nextBtn" class="primary-btn hidden">Pertanyaan Berikutnya →</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="logo" href="#">Fisika<span>Lab.</span></a>
+    <p>Media Pembelajaran Fisika Interaktif</p>
+    <p class="small">Belajar fisika melalui eksplorasi dan eksperimen.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
